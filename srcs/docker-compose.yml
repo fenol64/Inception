@@ -1,0 +1,21 @@
+services:
+    mariadb:
+        container_name: mariadb42
+        image: mariadb:42
+        build: ./requirements/mariadb
+        restart: always
+        env_file:
+            - .env
+        volumes:
+            - mariadb_data:/var/lib/mysql
+        ports:
+            - "3306:3306"
+
+
+volumes:
+    mariadb_data:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "~/inception_final/data/mariadb"
