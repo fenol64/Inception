@@ -10,6 +10,23 @@ services:
             - mariadb_data:/var/lib/mysql
         ports:
             - "3306:3306"
+        networks:
+            - internet
+    nginx:
+        container_name: nginx42
+        image: nginx:42
+        build: ./requirements/nginx
+        restart: always
+        env_file:
+            - .env
+        ports:
+            - "80:80"
+        networks:
+            - internet
+
+networks:
+    internet:
+        driver: bridge
 
 
 volumes:
