@@ -10,7 +10,7 @@ sup:
 	docker compose -f ./srcs/docker-compose.yml $(s) up --build
 
 down:
-	docker compose -f ./srcs/docker-compose.yml down
+	docker compose -f ./srcs/docker-compose.yml down -v
 
 re: down dup
 

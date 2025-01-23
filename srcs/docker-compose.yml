@@ -13,6 +13,9 @@ services:
         networks:
             - internet
     nginx:
+        depends_on:
+            - wordpress
+            - mariadb
         container_name: nginx42
         image: nginx:42
         build: ./requirements/nginx
@@ -23,6 +26,23 @@ services:
             - "80:80"
         networks:
             - internet
+        volumes:
+            - nginx_home:/var/www/html
+    wordpress:
+        depends_on:
+            - mariadb
+        container_name: wordpress42
+        image: wordpress:42
+        build: ./requirements/wordpress
+        restart: always
+        env_file:
+            - .env
+        ports:
+            - "8000:80"
+        networks:
+            - internet
+        volumes:
+            - nginx_home:/var/www/html
 
 networks:
     internet:
@@ -36,3 +56,9 @@ volumes:
             type: none
             o: bind
             device: "~/inception_final/data/mariadb"
+    nginx_home:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "~/inception_final/data/nginx"

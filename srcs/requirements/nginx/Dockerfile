@@ -4,7 +4,7 @@ FROM debian:bookworm
 RUN apt-get update && apt-get install -y nginx
 
 # Copy the configuration file
-#COPY ./conf/nginx.conf /etc/nginx/nginx.conf
+COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 
 # Copy the init script
 COPY ./tools/generate_certificate.sh /bin/generate_certificate.sh
