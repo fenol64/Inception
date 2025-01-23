@@ -10,14 +10,15 @@ if [ ! -f "/var/www/html/wp/wp-config.php" ]; then
 	wget --no-check-certificate -q -O - https://wordpress.org/latest.tar.gz | tar -xz -C /var/www/html/wp --strip-components=1
 	chmod -R +rwx /var/www/html/wp
 
+
 	echo "Setup Config"
-	wp --path=/var/www/html/wp --allow-root config create --dbname="$DB_NAME" --dbuser="$DB_USER" --dbpass="$DB_PASS" --dbhost="mariadb":"3306" --dbprefix='wp_'
+	wp config create --path=/var/www/html/wp --allow-root  --dbname="$DB_NAME" --dbuser="$DB_USER" --dbpass="$DB_PASS" --dbhost="mariadb":"3306" --dbprefix='wp_'
 	echo "Install Core"
-	wp --path=/var/www/html/wp --allow-root core install --url="$DOMAIN_NAME" --title="$WORDPRESS_SITE_NAME" --admin_user="$WP_ADMIN_USER" --admin_password="$WP_ADMIN_PASSWORD" --admin_email="$WP_ADMIN_EMAIL"
+	wp core install --path=/var/www/html/wp --allow-root --url="$DOMAIN_NAME" --title="$WORDPRESS_SITE_NAME" --admin_user="$WP_ADMIN_USER" --admin_password="$WP_ADMIN_PASSWORD" --admin_email="$WP_ADMIN_EMAIL"
 	echo "Create editor"
-	wp --path=/var/www/html/wp --allow-root user create "$WP_EDITOR_USER" "$WP_EDITOR_EMAIL" --role='editor' --user_pass="$WP_EDITOR_PASSWORD"
+	wp user create --path=/var/www/html/wp --allow-root "$WP_EDITOR_USER" "$WP_EDITOR_EMAIL" --role='editor' --user_pass="$WP_EDITOR_PASSWORD"
 	echo "Create user"
-	wp --path=/var/www/html/wp --allow-root user create "$WP_USER" "$WP_USER_EMAIL" --role='subscriber' --user_pass="$WP_USER_PASSWORD"
+	wp user create --path=/var/www/html/wp --allow-root  "$WP_USER" "$WP_USER_EMAIL" --role='subscriber' --user_pass="$WP_USER_PASSWORD"
 fi
 
 chmod -R 777 /var/www/html/wp
