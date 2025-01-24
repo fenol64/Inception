@@ -54,6 +54,15 @@ services:
             - "3000:3000"
         networks:
             - internet
+    adminer:
+        container_name: adminer42
+        image: adminer:42
+        build: ./requirements/bonus/adminer
+        restart: always
+        ports:
+            - "3001:3001"
+        networks:
+            - internet
 
 networks:
     internet:
