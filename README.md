@@ -114,8 +114,6 @@ You can create and manage networks using the **`docker network`** command. For e
 
 `docker network create my-network`
 
-- ressources for docker network : [https://www.youtube.com/watch?v=bKFMS5C4CG0](https://www.youtube.com/watch?v=bKFMS5C4CG0)
-
 ## What are DOCKER VOLUMES
 
 In Docker, a volume is a persistent storage location that is used to store data from a container. Volumes are used to persist data from a container even after the container is deleted, and they can be shared between containers.
@@ -154,3 +152,19 @@ volumes:
 ```
 
 This Compose file defines a **`db-data`** volume and attaches it to the **`db`** service at **`/var/lib/mysql`**. Any data written to this location in the container will be persisted in the volume.
+
+## useful links
+
+- [Docker Documentation](https://docs.docker.com/)
+- [Docker Compose Documentation](https://docs.docker.com/compose/)
+- [Docker Hub](https://hub.docker.com/)
+
+- [augusto galego video knowing nothing about docker and studing](https://www.youtube.com/watch?v=LGpJuDUaHXY&list=WL)
+
+- [Docker for beginners linuxTips](https://www.youtube.com/watch?v=Wm99C_f7Kxw&list=PLf-O3X2-mxDn1VpyU2q3fuI6YYeIWp5rR)
+
+- [you need to learn Docker RIGHT NOW!](https://www.youtube.com/watch?v=eGz9DS-aIeY)
+
+- [Docker networking is CRAZY!! (you NEED to learn it)](https://www.youtube.com/watch?v=bKFMS5C4CG0)
+
+
